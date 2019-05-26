@@ -1,14 +1,17 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-  export ZSH="/home/fernando/.oh-my-zsh"
+ export PATH=$HOME/bin:/usr/local/bin:$PATH
+export QSYS_ROOTDIR="/home/fernando/bin/intelFPGA_lite/17.0/quartus/sopc_builder/bin"
+export PATH="$PATH:$HOME/bin/esp/xtensa-esp32-elf/bin"
+export PATH=$PATH:$HOME/bin/esp/xtensa-lx106-elf/bin
+export IDF_PATH=$HOME/bin/esp/ESP8266_RTOS_SDK
+ #Path to your oh-my-zsh installation.
+export ZSH="/home/fernando/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gianu"
+ZSH_THEME="dallas"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -17,11 +20,11 @@ ZSH_THEME="gianu"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+#CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+#HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -68,7 +71,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git dnf taskwarrior tmux)
+plugins=(git dnf taskwarrior tmux themes colorize colored-man-pages cp)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,13 +80,13 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=pt_BR.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='vim'
 fi
 
 # Compilation flags
