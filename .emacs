@@ -67,4 +67,11 @@
 
 (setq org-default-notes-file "~/Documents/org/notes.org")
 
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/Documents/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/Documents/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))
+
+
 ;; END org
