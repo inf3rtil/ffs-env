@@ -201,7 +201,7 @@ colors:
   # Default colors
   primary:
     background: '#0d0d0d'
-    foreground: '#1ecbcb'
+    foreground: '#20ffda'
 
     # Bright and dim foreground colors
     #
@@ -364,11 +364,11 @@ bell:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  animation: EaseOutQuad
+  animation: Ease
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
-  duration: 150
+  duration: 0
 
   # Visual bell animation color.
   color: '#4f1718'
@@ -403,7 +403,7 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Beam
+    shape: Block
 
     # Cursor blinking state
     #
@@ -480,7 +480,7 @@ live_config_reload: true
 #
 # Terminal hints can be used to find text or hyperlink in the visible part of
 # the terminal and pipe it to other applications.
-#hints:
+hints:
   # Keys used for the hint labels.
   #alphabet: "jfkdls;ahgurieowpq"
 
@@ -513,18 +513,18 @@ live_config_reload: true
   #       Select the hint's text.
   #   - MoveViModeCursor
   #       Move the vi mode cursor to the beginning of the hint.
-  #enabled:
-  # - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-  #           [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
-  #   hyperlinks: true
-  #   command: xdg-open
-  #   post_processing: true
-  #   mouse:
-  #     enabled: true
-  #     mods: None
-  #   binding:
-  #     key: U
-  #     mods: Control|Shift
+  enabled:
+   - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+     hyperlinks: true
+     command: xdg-open
+     post_processing: true
+     mouse:
+       enabled: true
+       mods: None
+     binding:
+       key: U
+       mods: Control|Shift
 
 # Mouse bindings
 #

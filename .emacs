@@ -5,12 +5,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
+ '(custom-enabled-themes '(manoj-dark))
  '(delete-selection-mode nil)
- '(package-selected-packages '(magit counsel projectile ivy helm))
- '(projectile-globally-ignored-directories
-   '("*.devcontainer" "*.github" "*src" "^\\.idea$" "^\\.vscode$" "^\\.ensime_cache$" "^\\.eunit$" "^\\.git$" "^\\.hg$" "^\\.fslckout$" "^_FOSSIL_$" "^\\.bzr$" "^_darcs$" "^\\.pijul$" "^\\.tox$" "^\\.svn$" "^\\.stack-work$" "^\\.ccls-cache$" "^\\.cache$" "^\\.clangd$"))
- '(projectile-indexing-method 'native))
+ '(package-selected-packages '(org-roam magit counsel projectile ivy helm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -19,6 +16,10 @@
  )
 
 ;; END custom
+
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/") t)
 
 ;; START ivy
 (require 'counsel)
@@ -47,6 +48,7 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-project-search-path '("~/work/repos"))
 (setq projectile-auto-discover nil)
+(setq projectile-indexing-method 'alien)
 
 (projectile-mode +1)
 
