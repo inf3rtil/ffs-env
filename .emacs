@@ -7,7 +7,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(manoj-dark))
  '(delete-selection-mode nil)
- '(package-selected-packages '(org-roam magit counsel projectile ivy helm)))
+ '(global-wakatime-mode t)
+ '(package-selected-packages '(wakatime-mode org-roam magit counsel projectile ivy helm))
+ '(wakatime-cli-path "~/.wakatime/wakatime-cli"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -16,6 +18,9 @@
  )
 
 ;; END custom
+
+(load-file "~/.emacs.d/fernando/keys.el")
+(global-display-line-numbers-mode 1)
 
 (require 'package)
 (add-to-list 'package-archives
