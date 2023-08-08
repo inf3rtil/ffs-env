@@ -8,7 +8,8 @@
  '(custom-enabled-themes '(manoj-dark))
  '(delete-selection-mode nil)
  '(global-wakatime-mode t)
- '(package-selected-packages '(wakatime-mode org-roam magit counsel projectile ivy helm))
+ '(package-selected-packages
+   '(unicode-progress-reporter ess wakatime-mode org-roam magit counsel projectile ivy helm))
  '(wakatime-cli-path "~/.wakatime/wakatime-cli"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -19,7 +20,10 @@
 
 ;; END custom
 
+;; wakatime api key
 (load-file "~/.emacs.d/fernando/keys.el")
+
+;;built in modes
 (global-display-line-numbers-mode 1)
 
 (require 'package)
@@ -79,6 +83,8 @@
          "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/Documents/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
+
+
 
 
 ;; END org
