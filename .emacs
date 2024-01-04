@@ -9,7 +9,7 @@
  '(delete-selection-mode nil)
  '(global-wakatime-mode t)
  '(package-selected-packages
-   '(unicode-progress-reporter ess wakatime-mode org-roam magit counsel projectile ivy helm))
+   '(hledger-mode beans ledger-mode unicode-progress-reporter ess wakatime-mode org-roam magit counsel projectile ivy helm))
  '(wakatime-cli-path "~/.wakatime/wakatime-cli"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -83,8 +83,13 @@
          "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/Documents/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
+;; end org
 
+;; START beancount
 
-
-
-;; END org
+(add-to-list 'load-path "~/.emacs.d/fernando/plugins/beancount-mode")
+(require 'beancount)
+(add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode))
+(add-hook 'beancount-mode-hook
+	  (lambda () (setq-local electric-indent-chars nil)))
+;; END beancount

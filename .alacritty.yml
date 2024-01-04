@@ -200,7 +200,7 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Default colors
   primary:
-    background: '#0d0d0d'
+    background: '#000000'
     foreground: '#20ffda'
 
     # Bright and dim foreground colors
@@ -279,7 +279,7 @@ colors:
   # hyperlink URI preview, etc.
   #
   footer_bar:
-    background: '#c5c8c6'
+    background: '#ffffff'
     foreground: '#1d1f21'
 
   # Selection colors
