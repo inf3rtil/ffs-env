@@ -1,0 +1,9 @@
+live_config_reload = true
+
+[font]
+normal = { family = "IBM Plex Mono", style = "Regular" }
+size = 15
+
+[colors.primary]
+foreground = "#FFFFFF"
+background = "#000000"

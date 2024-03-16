@@ -11,10 +11,12 @@
      (awk-mode . "awk")
      (csharp-mode . "csharp")
      (other . "gnu")))
- '(custom-enabled-themes '(manoj-dark))
+ '(custom-enabled-themes '(zeno))
+ '(custom-safe-themes
+   '("10fef6d73ae453f39c9f325915386d41894870b72926e8e9b0c39d030447b703" "18624b2da7749af193a4eeaa7be1dc2abe94a97a8562ba69f5ee0f06d6dd156e" default))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(org-projectile-helm helm-org org-projectile helm-lsp helm-projectile helpful xwwp-follow-link-helm helm-aws dashboard embark activity-watch-mode flycheck lsp-ui company rustic lsp-mode rust-mode hledger-mode beans ledger-mode unicode-progress-reporter ess wakatime-mode org-roam magit counsel projectile ivy helm)))
+   '(subatomic-theme zeno-theme org-projectile-helm helm-org org-projectile helm-lsp helm-projectile helpful xwwp-follow-link-helm helm-aws dashboard embark activity-watch-mode flycheck lsp-ui company rustic lsp-mode rust-mode hledger-mode beans ledger-mode unicode-progress-reporter ess wakatime-mode org-roam magit counsel projectile ivy helm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
