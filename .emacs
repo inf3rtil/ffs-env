@@ -5,16 +5,28 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(LaTeX-amsmath-label "eq:")
+ '(TeX-auto-save t t)
+ '(TeX-parse-self t t)
+ '(TeX-view-program-selection
+   '(((output-dvi has-no-display-manager)
+      "dvi2tty")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-pdf "Okular")
+     (output-html "xdg-open")))
  '(c-basic-offset 4)
  '(c-default-style
    '((java-mode . "java")
      (awk-mode . "awk")
      (csharp-mode . "csharp")
      (other . "gnu")))
- '(custom-enabled-themes '(manoj-dark))
+ '(custom-enabled-themes '(leuven-dark))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(org-projectile-helm helm-org org-projectile helm-lsp helm-projectile helpful xwwp-follow-link-helm helm-aws dashboard embark activity-watch-mode flycheck lsp-ui company rustic lsp-mode rust-mode hledger-mode beans ledger-mode unicode-progress-reporter ess wakatime-mode org-roam magit counsel projectile ivy helm)))
+   '(treemacs-projectile treemacs company counsel ivy projectile lsp-mode helm good-scroll dashboard auctex))
+ '(preview-TeX-style-dir "/home/infertil/.emacs.d/elpa/auctex-14.0.5/latex" t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,40 +42,19 @@
 	     '("melpa" . "http://melpa.org/packages/") t)
 
 ;; built in --------------------------------------------------
-(set-frame-font "IBM Plex Mono 14" nil t)
+;; (set-frame-font "IBM Plex Mono 14" nil t)
 ;(global-display-line-numbers-mode 1)
 
-;; wakatime --------------------------------------------------
-;;(load-file "~/.emacs.d/fernando/keys.el")
-;;(setq wakatime-cli-path
-;;      "~/.wakatime/wakatime-cli")
-
 ;;activity-watch
-(global-activity-watch-mode 1)
+;;(global-activity-watch-mode 1)
 
-;; ivy -------------------------------------------------------
-;;(require 'counsel)
-;;(ivy-mode 0)
-;;(setq ivy-use-virtual-buffers t)
-;;(setq ivy-count-format "(%d/%d) ")
-;;(global-set-key (kbd "C-s") 'swiper-isearch)
-;;(global-set-key (kbd "M-x") 'counsel-M-x)
-;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-;;(global-set-key (kbd "M-y") 'counsel-yank-pop)
-;;(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-;;(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-;;(global-set-key (kbd "<f1> l") 'counsel-find-library)
-;;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-;;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-;;(global-set-key (kbd "<f2> j") 'counsel-set-variable)
-;;(global-set-key (kbd "C-x b") 'ivy-switch-buffer)
-;;(global-set-key (kbd "C-c v") 'ivy-push-view)
-;;(global-set-key (kbd "C-c V") 'ivy-pop-view)
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; projectile ------------------------------------------------
 (require 'projectile)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(setq projectile-project-search-path '("~/work/repos"))
+(setq projectile-project-search-path '("~/data/sdata/repos"))
 (setq projectile-auto-discover nil)
 (setq projectile-indexing-method 'alien)
 (projectile-mode +1)
@@ -79,7 +70,6 @@
       org-refile-targets '((org-agenda-files :maxlevel . 5))
       org-refile-use-outline-path 'file
 )
-
 (setq org-default-notes-file "~/Documents/org/notes.org")
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/Documents/org/gtd.org" "Tasks")
@@ -92,9 +82,10 @@
 (add-hook 'c-mode-hook #'lsp)
 (add-hook 'sh-mode-hook #'lsp)
 
-
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 
-(require 'helm)
-(helm-mode 1)
+
+;; LaTeX --------------------------------------------------------
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
