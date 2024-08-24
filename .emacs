@@ -22,10 +22,12 @@
      (awk-mode . "awk")
      (csharp-mode . "csharp")
      (other . "gnu")))
- '(custom-enabled-themes '(leuven-dark))
+ '(custom-enabled-themes '(modus-vivendi))
+ '(custom-safe-themes
+   '("3d21eda97ce916fda054b0d2e1381e3fb3118cee79749e4b282b55fc461fb13e" "a0f44dd00ce24985ee69df0579a22a0903881fd6d7b12c9f3a19e3d638a77590" default))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   '(treemacs-projectile treemacs company counsel ivy projectile lsp-mode helm good-scroll dashboard auctex))
+   '(arduino-mode ample-theme spice-mode treemacs-projectile treemacs company counsel ivy projectile lsp-mode helm good-scroll dashboard auctex))
  '(preview-TeX-style-dir "/home/infertil/.emacs.d/elpa/auctex-14.0.5/latex" t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -36,6 +38,8 @@
 
 ;; END custom
 
+(setq default-input-method "portuguese-prefix")
+
 ;; melpa ----------------------------------------------
 (require 'package)
 (add-to-list 'package-archives
@@ -43,6 +47,7 @@
 
 ;; built in --------------------------------------------------
 ;; (set-frame-font "IBM Plex Mono 14" nil t)
+ (set-frame-font "Iosevka Aile 11" nil t)
 ;(global-display-line-numbers-mode 1)
 
 ;;activity-watch
@@ -77,6 +82,10 @@
         ("j" "Journal" entry (file+datetree "~/Documents/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
 
+; adjust scale for 
+(add-hook 'org-mode-hook (lambda () (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))))
+
+
 ;; lsp ---------------------------------------------------------
 (require 'lsp-mode)
 (add-hook 'c-mode-hook #'lsp)
@@ -84,7 +93,6 @@
 
 (require 'dashboard)
 (dashboard-setup-startup-hook)
-
 
 ;; LaTeX --------------------------------------------------------
 (setq TeX-auto-save t)
