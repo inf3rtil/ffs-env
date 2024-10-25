@@ -5,30 +5,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(LaTeX-amsmath-label "eq:")
- '(TeX-auto-save t t)
- '(TeX-parse-self t t)
- '(TeX-view-program-selection
-   '(((output-dvi has-no-display-manager)
-      "dvi2tty")
-     ((output-dvi style-pstricks)
-      "dvips and gv")
-     (output-dvi "xdvi")
-     (output-pdf "Okular")
-     (output-html "xdg-open")))
  '(c-basic-offset 4)
- '(c-default-style
-   '((java-mode . "java")
-     (awk-mode . "awk")
-     (csharp-mode . "csharp")
-     (other . "gnu")))
  '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
    '("3d21eda97ce916fda054b0d2e1381e3fb3118cee79749e4b282b55fc461fb13e" "a0f44dd00ce24985ee69df0579a22a0903881fd6d7b12c9f3a19e3d638a77590" default))
- '(delete-selection-mode nil)
- '(package-selected-packages
-   '(arduino-mode ample-theme spice-mode treemacs-projectile treemacs company counsel ivy projectile lsp-mode helm good-scroll dashboard auctex))
- '(preview-TeX-style-dir "/home/infertil/.emacs.d/elpa/auctex-14.0.5/latex" t))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,10 +22,17 @@
 (setq default-input-method "portuguese-prefix")
 (setq inhibit-startup-screen t)
 
-;; melpa ----------------------------------------------
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+
+(setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs lsp-ivy
+   	dashboard counsel
+			projectile hydra flycheck company avy which-key helm-xref dap-mode))
+
+(when (cl-find-if-not #'package-installed-p package-selected-packages)
+  (package-refresh-contents)
+  (mapc #'package-install package-selected-packages))
 
 ;; built in --------------------------------------------------
 ;; (set-frame-font "IBM Plex Mono 14" nil t)
@@ -104,19 +92,29 @@
          "* TODO %?\n  %i\n  %a")
         ("j" "Journal" entry (file+datetree "~/Documents/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
-
 ; adjust scale for 
 (add-hook 'org-mode-hook (lambda () (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))))
 
-
 ;; lsp ---------------------------------------------------------
+(which-key-mode)
+(company-mode)
 (require 'lsp-mode)
 (add-hook 'c-mode-hook #'lsp)
 (add-hook 'sh-mode-hook #'lsp)
+(add-hook 'c++-mode-hook #'lsp)
 
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)  ;; clangd is fast
+
+;; dashboard
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 
 ;; LaTeX --------------------------------------------------------
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+
