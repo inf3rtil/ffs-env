@@ -9,7 +9,10 @@
  '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
    '("3d21eda97ce916fda054b0d2e1381e3fb3118cee79749e4b282b55fc461fb13e" "a0f44dd00ce24985ee69df0579a22a0903881fd6d7b12c9f3a19e3d638a77590" default))
-)
+ '(delete-selection-mode nil)
+ '(org-agenda-files nil)
+ '(package-selected-packages
+   '(vlf lsp-mode yasnippet lsp-treemacs lsp-ivy dashboard counsel projectile hydra flycheck company avy which-key helm-xref dap-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,8 +30,7 @@
 (package-initialize)
 
 (setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs lsp-ivy
-   	dashboard counsel
-			projectile hydra flycheck company avy which-key helm-xref dap-mode))
+   	dashboard counsel projectile hydra flycheck company avy which-key helm-xref dap-mode))
 
 (when (cl-find-if-not #'package-installed-p package-selected-packages)
   (package-refresh-contents)
@@ -81,16 +83,19 @@
 (global-set-key (kbd "C-c c") #'org-capture)
 ;; for refile tasks to other files
 ;; use with C-c C-w file.org/parent
-(setq org-agenda-files (list "~/Documents/org/")
+
+;; Files
+(setq org-directory "~/Nextcloud/org")
+(setq org-agenda-files (list "~/Nextcloud/org/")
       org-log-done 'time
       org-refile-targets '((org-agenda-files :maxlevel . 5))
       org-refile-use-outline-path 'file
 )
-(setq org-default-notes-file "~/Documents/org/notes.org")
+(setq org-default-notes-file "~/Nextcloud/org/notes.org")
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Documents/org/gtd.org" "Tasks")
+      '(("t" "Todo" entry (file+headline "~/Nextcloud/org/todo.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/Documents/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/Nextcloud/org/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
 ; adjust scale for 
 (add-hook 'org-mode-hook (lambda () (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))))
@@ -117,4 +122,21 @@
 ;; LaTeX --------------------------------------------------------
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+
+;; org roam
+
+(use-package org-roam
+  :ensure t
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+	 ("C-c n i" . org-roam-node-insert)
+	 :map org-mode-map
+	 ("C-M-i" . completion-at-point))
+  :config
+  (org-roam-setup))
+
+(setq org-roam-directory (file-truename "~/Nextcloud/org/org-roam"))
+(setq find-file-visit-truename t)
+(setq org-roam-completion-everywhere t)
+(org-roam-db-autosync-mode)
 
