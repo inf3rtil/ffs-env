@@ -49,7 +49,7 @@
 ;; font
 ;; (set-frame-font "IBM Plex Mono 14" nil t)
 (set-frame-font "Iosevka Fixed 12" nil t)
-(global-display-line-numbers-mode 1)
+;; (global-display-line-numbers-mode 1)
 
 ;;activity-watch
 ;;(global-activity-watch-mode 1)
