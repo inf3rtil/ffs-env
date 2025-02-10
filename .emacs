@@ -47,6 +47,11 @@
   (package-refresh-contents)
   (mapc #'package-install package-selected-packages))
 
+;; window
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
 ;; font
 ;; (set-frame-font "IBM Plex Mono 14" nil t)
 (set-frame-font "Iosevka Fixed 12" nil t)
@@ -157,3 +162,5 @@
 (setq org-roam-completion-everywhere t)
 (org-roam-db-autosync-mode)
 
+;; treemacs
+(treemacs)
